@@ -44,6 +44,12 @@ function filterByQuery(query, animalsArray) {
     return filteredResults
 }
 
+//function added for the :id GET route
+function findById(id, animalsArray) {
+    const result = animalsArray.filter(animal => animal.id === id)[0]
+    return result
+}
+
 //Add the route called by const { animals }
 //get() takes two arguments, string describing the route and a callback executed with each GET request
 //send() method from the res (response) parameter to send the contents of send() to our client
@@ -55,6 +61,23 @@ app.get('/api/animals', (req, res) => {
         results = filterByQuery(req.query, results)
     }
     res.send(results)
+})
+
+//GET route for animals with :id added
+/*this is a param route because it is adding that :id, so this is
+important, WITH MULTIPLE ROUTES, A PARAM ROUTE MUST COME AFTER THE OTHER
+GET ROUTE*/
+//Why don't we just ust the filterByQuery() function from up there?
+///We could, but we know with the :id that this will return a single animal
+///therefore there is no need for all that extra code
+app.get('/api/animals/:id', (req, res) => {
+    const result = findById(req.params.id, animals)
+    //send a 404 error if requested resource cannot be found
+    if (result) {
+        res.json(result)
+    } else {
+        res.send(404)
+    }
 })
 
 //app.listen([port[, host[, backlog]]][, callback])
