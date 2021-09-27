@@ -1,4 +1,6 @@
 const express = require('express')
+//When heroku runs our app, it sets an environment variable called process.env.PORT, if it hasn't been set, it defaults to port 80
+const PORT = process.env.PORT || 3001
 const app = express()
 //to request route that the front end can request data from
 const { animals } = require('./data/animals.json')
@@ -57,6 +59,7 @@ app.get('/api/animals', (req, res) => {
 
 //app.listen([port[, host[, backlog]]][, callback])
 //ports with numbers 1024 and under are special according to the operating system
-app.listen(3001, () => {
-    console.log(`API server now on port 3001!`)
+//PORT used to be 3001, better practice to set as variable to process.env.PORT
+app.listen(PORT, () => {
+    console.log(`API server now on port ${PORT}!`)
 });
