@@ -136,6 +136,24 @@
         "silly"
       ],
       "id": "13"
+    },
+    {
+      "name": "Bruce",
+      "species": "Great White Shark",
+      "diet": "carnivore",
+      "personalityTraits": [
+        "hungry"
+      ],
+      "id": "14"
+    },
+    {
+      "name": "Brucette",
+      "species": "Megoladon",
+      "diet": "carnivore",
+      "personalityTraits": [
+        "anxious"
+      ],
+      "id": "15"
     }
   ]
 }

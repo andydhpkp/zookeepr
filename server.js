@@ -6,6 +6,9 @@ const express = require('express')
 //When heroku runs our app, it sets an environment variable called process.env.PORT, if it hasn't been set, it defaults to port 80
 const PORT = process.env.PORT || 3001
 const app = express()
+//middleware that instructs the server to make certain files readily available and to not gate it behind a server endpoint (aka actually load all the routes without making the routes)
+///the way this works is that we provide a file path to a location in our application (in this case, the public folder) and instruct the server to make these files static resources
+app.use(express.static('public'))
 //parse incoming string or array data
 //the data needs to get parsed before it gets to the callback function in order for the server to accept the incoming data
 //this method is built into Express.js. It takes incoming POST data and converts it to key/value pairings that can be accessed in the req.body object
@@ -147,6 +150,11 @@ app.post('/api/animals', (req, res) => {
         res.json(req.body)
     }
 
+})
+
+//this route has one job to do, to respond with an HTML page to display in the browser
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/index.html'))
 })
 
 //app.listen([port[, host[, backlog]]][, callback])
