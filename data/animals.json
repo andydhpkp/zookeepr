@@ -126,6 +126,16 @@
         "hungry"
       ],
       "id": "12"
+    },
+    {
+      "name": "Alex",
+      "species": "Pig",
+      "diet": "herbivore",
+      "personalityTraits": [
+        "loving",
+        "silly"
+      ],
+      "id": "13"
     }
   ]
 }
