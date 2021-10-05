@@ -154,6 +154,15 @@
         "anxious"
       ],
       "id": "15"
+    },
+    {
+      "name": "Bruce",
+      "species": "Great White Shark",
+      "diet": "folivore",
+      "personalityTraits": [
+        "zany"
+      ],
+      "id": "16"
     }
   ]
 }

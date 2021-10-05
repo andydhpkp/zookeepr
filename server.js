@@ -157,6 +157,22 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, './public/index.html'))
 })
 
+//this route will take us to /animals
+app.get('/animals', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/animals.html'))
+})
+
+//this route will take us to /zookeepers
+app.get('/zookeepers', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/zookeepers.html'))
+})
+
+//this route allows us to take requests that do not exist and reroute them wherever we want
+///MAKE SURE THIS ROUTE COMES LAST OR EVERYTHING UNDER WILL GO HERE
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/index.html'))
+})
+
 //app.listen([port[, host[, backlog]]][, callback])
 //ports with numbers 1024 and under are special according to the operating system
 //PORT used to be 3001, better practice to set as variable to process.env.PORT
